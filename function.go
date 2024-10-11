@@ -38,10 +38,15 @@ func NewFunctionService(opts ...option.RequestOption) (r *FunctionService) {
 
 // Creates a new function within the authenticated NVIDIA Cloud Account. Requires a
 // bearer token with 'register_function' scope in the HTTP Authorization header.
-func (r *FunctionService) New(ctx context.Context, body FunctionNewParams, opts ...option.RequestOption) (res *shared.CreateFunctionResponse, err error) {
+func (r *FunctionService) New(ctx context.Context, body FunctionNewParams, opts ...option.RequestOption) (res *shared.FunctionDTO, err error) {
+	var env shared.CreateFunctionResponse
 	opts = append(r.Options[:], opts...)
 	path := "v2/nvcf/functions"
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &env, opts...)
+	if err != nil {
+		return
+	}
+	res = &env.Function
 	return
 }
 
@@ -182,6 +187,29 @@ type FunctionNewParamsSecret struct {
 
 func (r FunctionNewParamsSecret) MarshalJSON() (data []byte, err error) {
 	return apijson.MarshalRoot(r)
+}
+
+// Response body for create function request.
+type CreateFunctionResponse struct {
+	// Data Transfer Object (DTO) representing a function
+	Function shared.FunctionDTO         `json:"function,required"`
+	JSON     createFunctionResponseJSON `json:"-"`
+}
+
+// createFunctionResponseJSON contains the JSON metadata for the struct
+// [shared.CreateFunctionResponse]
+type createFunctionResponseJSON struct {
+	Function    apijson.Field
+	raw         string
+	ExtraFields map[string]apijson.Field
+}
+
+func (r *shared.CreateFunctionResponse) UnmarshalJSON(data []byte) (err error) {
+	return apijson.UnmarshalRoot(data, r)
+}
+
+func (r createFunctionResponseJSON) RawJSON() string {
+	return r.raw
 }
 
 type FunctionGetAllParams struct {

@@ -52,14 +52,14 @@ func main() {
 	client := nvcf.NewClient(
 		option.WithAuthToken("My Auth Token"), // defaults to os.LookupEnv("NVCF_AUTH_TOKEN")
 	)
-	createFunctionResponse, err := client.Functions.New(context.TODO(), nvcf.FunctionNewParams{
+	functionDTO, err := client.Functions.New(context.TODO(), nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Printf("%+v\n", createFunctionResponse.Function)
+	fmt.Printf("%+v\n", functionDTO.ID)
 }
 
 ```
