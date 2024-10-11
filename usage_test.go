@@ -24,12 +24,12 @@ func TestUsage(t *testing.T) {
 		option.WithBaseURL(baseURL),
 		option.WithAuthToken("My Auth Token"),
 	)
-	createFunctionResponse, err := client.Functions.New(context.TODO(), nvcf.FunctionNewParams{
+	functionDTO, err := client.Functions.New(context.TODO(), nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
 	if err != nil {
 		t.Error(err)
 	}
-	t.Logf("%+v\n", createFunctionResponse.Function)
+	t.Logf("%+v\n", functionDTO.ID)
 }
