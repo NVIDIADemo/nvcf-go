@@ -21,9 +21,9 @@ type Client struct {
 	FunctionDeployment                   *FunctionDeploymentService
 	FunctionInvocation                   *FunctionInvocationService
 	EnvelopeFunctionInvocation           *EnvelopeFunctionInvocationService
-	NVCF                                 *NVCFService
-	Assets                               *AssetService
+	Functions                            *FunctionService
 	Authorizations                       *AuthorizationService
+	Assets                               *AssetService
 	Queues                               *QueueService
 	Pexec                                *PexecService
 	ClusterGroupsAndGPUs                 *ClusterGroupsAndGPUService
@@ -49,9 +49,9 @@ func NewClient(opts ...option.RequestOption) (r *Client) {
 	r.FunctionDeployment = NewFunctionDeploymentService(opts...)
 	r.FunctionInvocation = NewFunctionInvocationService(opts...)
 	r.EnvelopeFunctionInvocation = NewEnvelopeFunctionInvocationService(opts...)
-	r.NVCF = NewNVCFService(opts...)
-	r.Assets = NewAssetService(opts...)
+	r.Functions = NewFunctionService(opts...)
 	r.Authorizations = NewAuthorizationService(opts...)
+	r.Assets = NewAssetService(opts...)
 	r.Queues = NewQueueService(opts...)
 	r.Pexec = NewPexecService(opts...)
 	r.ClusterGroupsAndGPUs = NewClusterGroupsAndGPUService(opts...)
