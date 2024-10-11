@@ -17,10 +17,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/brevdev/nvcf-go/internal"
-	"github.com/brevdev/nvcf-go/internal/apierror"
-	"github.com/brevdev/nvcf-go/internal/apiform"
-	"github.com/brevdev/nvcf-go/internal/apiquery"
+	"github.com/NVIDIADemo/nvcf-go/internal"
+	"github.com/NVIDIADemo/nvcf-go/internal/apierror"
+	"github.com/NVIDIADemo/nvcf-go/internal/apiform"
+	"github.com/NVIDIADemo/nvcf-go/internal/apiquery"
 )
 
 func getDefaultHeaders() map[string]string {

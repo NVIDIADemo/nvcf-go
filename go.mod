@@ -1,4 +1,4 @@
-module github.com/brevdev/nvcf-go
+module github.com/NVIDIADemo/nvcf-go
 
 go 1.21
 

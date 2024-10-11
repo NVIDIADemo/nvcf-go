@@ -3,7 +3,7 @@
 package nvcf
 
 import (
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 // FunctionManagementFunctionService contains methods and other services that help

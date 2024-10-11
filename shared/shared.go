@@ -5,7 +5,7 @@ package shared
 import (
 	"time"
 
-	"github.com/brevdev/nvcf-go/internal/apijson"
+	"github.com/NVIDIADemo/nvcf-go/internal/apijson"
 )
 
 // Parties authorized to invoke function

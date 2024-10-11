@@ -3,8 +3,8 @@
 package nvcf
 
 import (
-	"github.com/brevdev/nvcf-go/internal/apierror"
-	"github.com/brevdev/nvcf-go/shared"
+	"github.com/NVIDIADemo/nvcf-go/internal/apierror"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 type Error = apierror.Error
