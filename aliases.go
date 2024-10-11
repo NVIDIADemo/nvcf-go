@@ -178,29 +178,29 @@ const InvokeFunctionResponseStatusRejected = shared.InvokeFunctionResponseStatus
 // Request queue details of all the functions with same id in an account
 //
 // This is an alias to an internal type.
-type Queues = shared.Queues
+type QueuesResponse = shared.QueuesResponse
 
 // Data Transfer Object(DTO) representing a request queue for function version
 //
 // This is an alias to an internal type.
-type QueuesQueue = shared.QueuesQueue
+type QueuesResponseQueue = shared.QueuesResponseQueue
 
 // Function status
 //
 // This is an alias to an internal type.
-type QueuesQueuesFunctionStatus = shared.QueuesQueuesFunctionStatus
+type QueuesResponseQueuesFunctionStatus = shared.QueuesResponseQueuesFunctionStatus
 
 // This is an alias to an internal value.
-const QueuesQueuesFunctionStatusActive = shared.QueuesQueuesFunctionStatusActive
+const QueuesResponseQueuesFunctionStatusActive = shared.QueuesResponseQueuesFunctionStatusActive
 
 // This is an alias to an internal value.
-const QueuesQueuesFunctionStatusDeploying = shared.QueuesQueuesFunctionStatusDeploying
+const QueuesResponseQueuesFunctionStatusDeploying = shared.QueuesResponseQueuesFunctionStatusDeploying
 
 // This is an alias to an internal value.
-const QueuesQueuesFunctionStatusError = shared.QueuesQueuesFunctionStatusError
+const QueuesResponseQueuesFunctionStatusError = shared.QueuesResponseQueuesFunctionStatusError
 
 // This is an alias to an internal value.
-const QueuesQueuesFunctionStatusInactive = shared.QueuesQueuesFunctionStatusInactive
+const QueuesResponseQueuesFunctionStatusInactive = shared.QueuesResponseQueuesFunctionStatusInactive
 
 // This is an alias to an internal value.
-const QueuesQueuesFunctionStatusDeleted = shared.QueuesQueuesFunctionStatusDeleted
+const QueuesResponseQueuesFunctionStatusDeleted = shared.QueuesResponseQueuesFunctionStatusDeleted

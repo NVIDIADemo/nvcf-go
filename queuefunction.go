@@ -39,7 +39,7 @@ func NewQueueFunctionService(opts ...option.RequestOption) (r *QueueFunctionServ
 // includes details of all the queues. If the specified function is public, then
 // Account Admin cannot perform this operation. Requires a bearer token or an
 // api-key with 'queue_details' scope in the HTTP Authorization header.
-func (r *QueueFunctionService) GetAll(ctx context.Context, functionID string, opts ...option.RequestOption) (res *shared.Queues, err error) {
+func (r *QueueFunctionService) GetAll(ctx context.Context, functionID string, opts ...option.RequestOption) (res *shared.QueuesResponse, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")

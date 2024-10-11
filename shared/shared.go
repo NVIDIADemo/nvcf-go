@@ -603,45 +603,46 @@ func (r InvokeFunctionResponseStatus) IsKnown() bool {
 }
 
 // Request queue details of all the functions with same id in an account
-type Queues struct {
+type QueuesResponse struct {
 	// Function id
 	FunctionID string `json:"functionId,required" format:"uuid"`
 	// Details of all the queues associated with same named functions
-	Queues []QueuesQueue `json:"queues,required"`
-	JSON   queuesJSON    `json:"-"`
+	Queues []QueuesResponseQueue `json:"queues,required"`
+	JSON   queuesResponseJSON    `json:"-"`
 }
 
-// queuesJSON contains the JSON metadata for the struct [Queues]
-type queuesJSON struct {
+// queuesResponseJSON contains the JSON metadata for the struct [QueuesResponse]
+type queuesResponseJSON struct {
 	FunctionID  apijson.Field
 	Queues      apijson.Field
 	raw         string
 	ExtraFields map[string]apijson.Field
 }
 
-func (r *Queues) UnmarshalJSON(data []byte) (err error) {
+func (r *QueuesResponse) UnmarshalJSON(data []byte) (err error) {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (r queuesJSON) RawJSON() string {
+func (r queuesResponseJSON) RawJSON() string {
 	return r.raw
 }
 
 // Data Transfer Object(DTO) representing a request queue for function version
-type QueuesQueue struct {
+type QueuesResponseQueue struct {
 	// Function name
 	FunctionName string `json:"functionName,required"`
 	// Function status
-	FunctionStatus QueuesQueuesFunctionStatus `json:"functionStatus,required"`
+	FunctionStatus QueuesResponseQueuesFunctionStatus `json:"functionStatus,required"`
 	// Function version id
 	FunctionVersionID string `json:"functionVersionId,required" format:"uuid"`
 	// Approximate number of messages in the request queue
-	QueueDepth int64           `json:"queueDepth"`
-	JSON       queuesQueueJSON `json:"-"`
+	QueueDepth int64                   `json:"queueDepth"`
+	JSON       queuesResponseQueueJSON `json:"-"`
 }
 
-// queuesQueueJSON contains the JSON metadata for the struct [QueuesQueue]
-type queuesQueueJSON struct {
+// queuesResponseQueueJSON contains the JSON metadata for the struct
+// [QueuesResponseQueue]
+type queuesResponseQueueJSON struct {
 	FunctionName      apijson.Field
 	FunctionStatus    apijson.Field
 	FunctionVersionID apijson.Field
@@ -650,28 +651,28 @@ type queuesQueueJSON struct {
 	ExtraFields       map[string]apijson.Field
 }
 
-func (r *QueuesQueue) UnmarshalJSON(data []byte) (err error) {
+func (r *QueuesResponseQueue) UnmarshalJSON(data []byte) (err error) {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (r queuesQueueJSON) RawJSON() string {
+func (r queuesResponseQueueJSON) RawJSON() string {
 	return r.raw
 }
 
 // Function status
-type QueuesQueuesFunctionStatus string
+type QueuesResponseQueuesFunctionStatus string
 
 const (
-	QueuesQueuesFunctionStatusActive    QueuesQueuesFunctionStatus = "ACTIVE"
-	QueuesQueuesFunctionStatusDeploying QueuesQueuesFunctionStatus = "DEPLOYING"
-	QueuesQueuesFunctionStatusError     QueuesQueuesFunctionStatus = "ERROR"
-	QueuesQueuesFunctionStatusInactive  QueuesQueuesFunctionStatus = "INACTIVE"
-	QueuesQueuesFunctionStatusDeleted   QueuesQueuesFunctionStatus = "DELETED"
+	QueuesResponseQueuesFunctionStatusActive    QueuesResponseQueuesFunctionStatus = "ACTIVE"
+	QueuesResponseQueuesFunctionStatusDeploying QueuesResponseQueuesFunctionStatus = "DEPLOYING"
+	QueuesResponseQueuesFunctionStatusError     QueuesResponseQueuesFunctionStatus = "ERROR"
+	QueuesResponseQueuesFunctionStatusInactive  QueuesResponseQueuesFunctionStatus = "INACTIVE"
+	QueuesResponseQueuesFunctionStatusDeleted   QueuesResponseQueuesFunctionStatus = "DELETED"
 )
 
-func (r QueuesQueuesFunctionStatus) IsKnown() bool {
+func (r QueuesResponseQueuesFunctionStatus) IsKnown() bool {
 	switch r {
-	case QueuesQueuesFunctionStatusActive, QueuesQueuesFunctionStatusDeploying, QueuesQueuesFunctionStatusError, QueuesQueuesFunctionStatusInactive, QueuesQueuesFunctionStatusDeleted:
+	case QueuesResponseQueuesFunctionStatusActive, QueuesResponseQueuesFunctionStatusDeploying, QueuesResponseQueuesFunctionStatusError, QueuesResponseQueuesFunctionStatusInactive, QueuesResponseQueuesFunctionStatusDeleted:
 		return true
 	}
 	return false
