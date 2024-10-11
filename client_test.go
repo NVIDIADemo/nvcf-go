@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 type closureTransport struct {

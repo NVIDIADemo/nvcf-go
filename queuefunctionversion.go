@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
-	"github.com/brevdev/nvcf-go/shared"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 // QueueFunctionVersionService contains methods and other services that help with

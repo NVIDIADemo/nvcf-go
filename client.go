@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 // Client creates a struct with services and top level methods that help with
