@@ -17,10 +17,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/brevdev/nvcf-go/internal"
-	"github.com/brevdev/nvcf-go/internal/apierror"
-	"github.com/brevdev/nvcf-go/internal/apiform"
-	"github.com/brevdev/nvcf-go/internal/apiquery"
+	"github.com/NVIDIADemo/nvcf-go/internal"
+	"github.com/NVIDIADemo/nvcf-go/internal/apierror"
+	"github.com/NVIDIADemo/nvcf-go/internal/apiform"
+	"github.com/NVIDIADemo/nvcf-go/internal/apiquery"
 )
 
 func getDefaultHeaders() map[string]string {
@@ -171,6 +171,7 @@ type RequestConfig struct {
 	BaseURL        *url.URL
 	HTTPClient     *http.Client
 	Middlewares    []middleware
+	AuthToken      string
 	// If ResponseBodyInto not nil, then we will attempt to deserialize into
 	// ResponseBodyInto. If Destination is a []byte, then it will return the body as
 	// is.

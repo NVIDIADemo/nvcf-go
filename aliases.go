@@ -3,8 +3,8 @@
 package nvcf
 
 import (
-	"github.com/brevdev/nvcf-go/internal/apierror"
-	"github.com/brevdev/nvcf-go/shared"
+	"github.com/NVIDIADemo/nvcf-go/internal/apierror"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 type Error = apierror.Error
@@ -12,257 +12,142 @@ type Error = apierror.Error
 // Parties authorized to invoke function
 //
 // This is an alias to an internal type.
-type AuthorizedPartiesResponse = shared.AuthorizedPartiesResponse
+type AuthorizedParties = shared.AuthorizedParties
 
 // Data Transfer Object(DTO) representing a function with authorized accounts
 //
 // This is an alias to an internal type.
-type AuthorizedPartiesResponseFunction = shared.AuthorizedPartiesResponseFunction
+type AuthorizedPartiesFunction = shared.AuthorizedPartiesFunction
 
 // Data Transfer Object(DTO) representing an authorized party.
 //
 // This is an alias to an internal type.
-type AuthorizedPartiesResponseFunctionAuthorizedParty = shared.AuthorizedPartiesResponseFunctionAuthorizedParty
+type AuthorizedPartyDTO = shared.AuthorizedPartyDTO
+
+// Data Transfer Object(DTO) representing an authorized party.
+//
+// This is an alias to an internal type.
+type AuthorizedPartyDTOParam = shared.AuthorizedPartyDTOParam
 
 // Response body for create function request.
 //
 // This is an alias to an internal type.
 type CreateFunctionResponse = shared.CreateFunctionResponse
 
-// Data Transfer Object (DTO) representing a function
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunction = shared.CreateFunctionResponseFunction
-
-// Used to indicate a STREAMING function. Defaults to DEFAULT.
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionFunctionType = shared.CreateFunctionResponseFunctionFunctionType
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionFunctionTypeDefault = shared.CreateFunctionResponseFunctionFunctionTypeDefault
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionFunctionTypeStreaming = shared.CreateFunctionResponseFunctionFunctionTypeStreaming
-
-// Function status
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionStatus = shared.CreateFunctionResponseFunctionStatus
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionStatusActive = shared.CreateFunctionResponseFunctionStatusActive
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionStatusDeploying = shared.CreateFunctionResponseFunctionStatusDeploying
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionStatusError = shared.CreateFunctionResponseFunctionStatusError
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionStatusInactive = shared.CreateFunctionResponseFunctionStatusInactive
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionStatusDeleted = shared.CreateFunctionResponseFunctionStatusDeleted
-
-// Data Transfer Object(DTO) representing a spot instance
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionActiveInstance = shared.CreateFunctionResponseFunctionActiveInstance
-
-// Instance status
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionActiveInstancesInstanceStatus = shared.CreateFunctionResponseFunctionActiveInstancesInstanceStatus
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionActiveInstancesInstanceStatusActive = shared.CreateFunctionResponseFunctionActiveInstancesInstanceStatusActive
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionActiveInstancesInstanceStatusErrored = shared.CreateFunctionResponseFunctionActiveInstancesInstanceStatusErrored
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionActiveInstancesInstanceStatusPreempted = shared.CreateFunctionResponseFunctionActiveInstancesInstanceStatusPreempted
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionActiveInstancesInstanceStatusDeleted = shared.CreateFunctionResponseFunctionActiveInstancesInstanceStatusDeleted
-
-// Invocation request body format
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionAPIBodyFormat = shared.CreateFunctionResponseFunctionAPIBodyFormat
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionAPIBodyFormatPredictV2 = shared.CreateFunctionResponseFunctionAPIBodyFormatPredictV2
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionAPIBodyFormatCustom = shared.CreateFunctionResponseFunctionAPIBodyFormatCustom
-
-// Data Transfer Object(DTO) representing a container environment entry
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionContainerEnvironment = shared.CreateFunctionResponseFunctionContainerEnvironment
-
-// Data Transfer Object(DTO) representing a function ne
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionHealth = shared.CreateFunctionResponseFunctionHealth
-
-// HTTP/gPRC protocol type for health endpoint
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionHealthProtocol = shared.CreateFunctionResponseFunctionHealthProtocol
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionHealthProtocolHTTP = shared.CreateFunctionResponseFunctionHealthProtocolHTTP
-
-// This is an alias to an internal value.
-const CreateFunctionResponseFunctionHealthProtocolGRpc = shared.CreateFunctionResponseFunctionHealthProtocolGRpc
-
-// Data Transfer Object(DTO) representing an artifact
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionModel = shared.CreateFunctionResponseFunctionModel
-
-// Data Transfer Object(DTO) representing an artifact
-//
-// This is an alias to an internal type.
-type CreateFunctionResponseFunctionResource = shared.CreateFunctionResponseFunctionResource
-
 // Response body with function details
 //
 // This is an alias to an internal type.
-type FunctionResponse = shared.FunctionResponse
+type Function = shared.Function
 
 // Data Transfer Object (DTO) representing a function
 //
 // This is an alias to an internal type.
-type FunctionResponseFunction = shared.FunctionResponseFunction
+type FunctionDTO = shared.FunctionDTO
 
 // Used to indicate a STREAMING function. Defaults to DEFAULT.
 //
 // This is an alias to an internal type.
-type FunctionResponseFunctionFunctionType = shared.FunctionResponseFunctionFunctionType
+type FunctionDTOFunctionType = shared.FunctionDTOFunctionType
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionFunctionTypeDefault = shared.FunctionResponseFunctionFunctionTypeDefault
+const FunctionDTOFunctionTypeDefault = shared.FunctionDTOFunctionTypeDefault
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionFunctionTypeStreaming = shared.FunctionResponseFunctionFunctionTypeStreaming
+const FunctionDTOFunctionTypeStreaming = shared.FunctionDTOFunctionTypeStreaming
 
 // Function status
 //
 // This is an alias to an internal type.
-type FunctionResponseFunctionStatus = shared.FunctionResponseFunctionStatus
+type FunctionDTOStatus = shared.FunctionDTOStatus
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionStatusActive = shared.FunctionResponseFunctionStatusActive
+const FunctionDTOStatusActive = shared.FunctionDTOStatusActive
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionStatusDeploying = shared.FunctionResponseFunctionStatusDeploying
+const FunctionDTOStatusDeploying = shared.FunctionDTOStatusDeploying
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionStatusError = shared.FunctionResponseFunctionStatusError
+const FunctionDTOStatusError = shared.FunctionDTOStatusError
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionStatusInactive = shared.FunctionResponseFunctionStatusInactive
+const FunctionDTOStatusInactive = shared.FunctionDTOStatusInactive
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionStatusDeleted = shared.FunctionResponseFunctionStatusDeleted
+const FunctionDTOStatusDeleted = shared.FunctionDTOStatusDeleted
 
 // Data Transfer Object(DTO) representing a spot instance
 //
 // This is an alias to an internal type.
-type FunctionResponseFunctionActiveInstance = shared.FunctionResponseFunctionActiveInstance
+type FunctionDTOActiveInstance = shared.FunctionDTOActiveInstance
 
 // Instance status
 //
 // This is an alias to an internal type.
-type FunctionResponseFunctionActiveInstancesInstanceStatus = shared.FunctionResponseFunctionActiveInstancesInstanceStatus
+type FunctionDTOActiveInstancesInstanceStatus = shared.FunctionDTOActiveInstancesInstanceStatus
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionActiveInstancesInstanceStatusActive = shared.FunctionResponseFunctionActiveInstancesInstanceStatusActive
+const FunctionDTOActiveInstancesInstanceStatusActive = shared.FunctionDTOActiveInstancesInstanceStatusActive
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionActiveInstancesInstanceStatusErrored = shared.FunctionResponseFunctionActiveInstancesInstanceStatusErrored
+const FunctionDTOActiveInstancesInstanceStatusErrored = shared.FunctionDTOActiveInstancesInstanceStatusErrored
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionActiveInstancesInstanceStatusPreempted = shared.FunctionResponseFunctionActiveInstancesInstanceStatusPreempted
+const FunctionDTOActiveInstancesInstanceStatusPreempted = shared.FunctionDTOActiveInstancesInstanceStatusPreempted
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionActiveInstancesInstanceStatusDeleted = shared.FunctionResponseFunctionActiveInstancesInstanceStatusDeleted
+const FunctionDTOActiveInstancesInstanceStatusDeleted = shared.FunctionDTOActiveInstancesInstanceStatusDeleted
 
 // Invocation request body format
 //
 // This is an alias to an internal type.
-type FunctionResponseFunctionAPIBodyFormat = shared.FunctionResponseFunctionAPIBodyFormat
+type FunctionDTOAPIBodyFormat = shared.FunctionDTOAPIBodyFormat
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionAPIBodyFormatPredictV2 = shared.FunctionResponseFunctionAPIBodyFormatPredictV2
+const FunctionDTOAPIBodyFormatPredictV2 = shared.FunctionDTOAPIBodyFormatPredictV2
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionAPIBodyFormatCustom = shared.FunctionResponseFunctionAPIBodyFormatCustom
+const FunctionDTOAPIBodyFormatCustom = shared.FunctionDTOAPIBodyFormatCustom
 
 // Data Transfer Object(DTO) representing a container environment entry
 //
 // This is an alias to an internal type.
-type FunctionResponseFunctionContainerEnvironment = shared.FunctionResponseFunctionContainerEnvironment
+type FunctionDTOContainerEnvironment = shared.FunctionDTOContainerEnvironment
+
+// Data Transfer Object(DTO) representing an artifact
+//
+// This is an alias to an internal type.
+type FunctionDTOModel = shared.FunctionDTOModel
+
+// Data Transfer Object(DTO) representing an artifact
+//
+// This is an alias to an internal type.
+type FunctionDTOResource = shared.FunctionDTOResource
+
+// Response body containing list of functions
+//
+// This is an alias to an internal type.
+type FunctionsResponse = shared.FunctionsResponse
 
 // Data Transfer Object(DTO) representing a function ne
 //
 // This is an alias to an internal type.
-type FunctionResponseFunctionHealth = shared.FunctionResponseFunctionHealth
+type HealthDTO = shared.HealthDTO
 
 // HTTP/gPRC protocol type for health endpoint
 //
 // This is an alias to an internal type.
-type FunctionResponseFunctionHealthProtocol = shared.FunctionResponseFunctionHealthProtocol
+type HealthDTOProtocol = shared.HealthDTOProtocol
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionHealthProtocolHTTP = shared.FunctionResponseFunctionHealthProtocolHTTP
+const HealthDTOProtocolHTTP = shared.HealthDTOProtocolHTTP
 
 // This is an alias to an internal value.
-const FunctionResponseFunctionHealthProtocolGRpc = shared.FunctionResponseFunctionHealthProtocolGRpc
+const HealthDTOProtocolGRpc = shared.HealthDTOProtocolGRpc
 
-// Data Transfer Object(DTO) representing an artifact
+// Data Transfer Object(DTO) representing a function ne
 //
 // This is an alias to an internal type.
-type FunctionResponseFunctionModel = shared.FunctionResponseFunctionModel
-
-// Data Transfer Object(DTO) representing an artifact
-//
-// This is an alias to an internal type.
-type FunctionResponseFunctionResource = shared.FunctionResponseFunctionResource
-
-// Request queue details of all the functions with same id in an account
-//
-// This is an alias to an internal type.
-type GetQueuesResponse = shared.GetQueuesResponse
-
-// Data Transfer Object(DTO) representing a request queue for function version
-//
-// This is an alias to an internal type.
-type GetQueuesResponseQueue = shared.GetQueuesResponseQueue
-
-// Function status
-//
-// This is an alias to an internal type.
-type GetQueuesResponseQueuesFunctionStatus = shared.GetQueuesResponseQueuesFunctionStatus
-
-// This is an alias to an internal value.
-const GetQueuesResponseQueuesFunctionStatusActive = shared.GetQueuesResponseQueuesFunctionStatusActive
-
-// This is an alias to an internal value.
-const GetQueuesResponseQueuesFunctionStatusDeploying = shared.GetQueuesResponseQueuesFunctionStatusDeploying
-
-// This is an alias to an internal value.
-const GetQueuesResponseQueuesFunctionStatusError = shared.GetQueuesResponseQueuesFunctionStatusError
-
-// This is an alias to an internal value.
-const GetQueuesResponseQueuesFunctionStatusInactive = shared.GetQueuesResponseQueuesFunctionStatusInactive
-
-// This is an alias to an internal value.
-const GetQueuesResponseQueuesFunctionStatusDeleted = shared.GetQueuesResponseQueuesFunctionStatusDeleted
+type HealthDTOParam = shared.HealthDTOParam
 
 // Response body with result from a request for executing a job/task as a cloud
 // function using a GPU powered spot/on-demand instance.
@@ -290,107 +175,32 @@ const InvokeFunctionResponseStatusPendingEvaluation = shared.InvokeFunctionRespo
 // This is an alias to an internal value.
 const InvokeFunctionResponseStatusRejected = shared.InvokeFunctionResponseStatusRejected
 
-// Response body containing list of functions
+// Request queue details of all the functions with same id in an account
 //
 // This is an alias to an internal type.
-type ListFunctionsResponse = shared.ListFunctionsResponse
+type QueuesResponse = shared.QueuesResponse
 
-// Data Transfer Object (DTO) representing a function
+// Data Transfer Object(DTO) representing a request queue for function version
 //
 // This is an alias to an internal type.
-type ListFunctionsResponseFunction = shared.ListFunctionsResponseFunction
-
-// Used to indicate a STREAMING function. Defaults to DEFAULT.
-//
-// This is an alias to an internal type.
-type ListFunctionsResponseFunctionsFunctionType = shared.ListFunctionsResponseFunctionsFunctionType
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsFunctionTypeDefault = shared.ListFunctionsResponseFunctionsFunctionTypeDefault
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsFunctionTypeStreaming = shared.ListFunctionsResponseFunctionsFunctionTypeStreaming
+type QueuesResponseQueue = shared.QueuesResponseQueue
 
 // Function status
 //
 // This is an alias to an internal type.
-type ListFunctionsResponseFunctionsStatus = shared.ListFunctionsResponseFunctionsStatus
+type QueuesResponseQueuesFunctionStatus = shared.QueuesResponseQueuesFunctionStatus
 
 // This is an alias to an internal value.
-const ListFunctionsResponseFunctionsStatusActive = shared.ListFunctionsResponseFunctionsStatusActive
+const QueuesResponseQueuesFunctionStatusActive = shared.QueuesResponseQueuesFunctionStatusActive
 
 // This is an alias to an internal value.
-const ListFunctionsResponseFunctionsStatusDeploying = shared.ListFunctionsResponseFunctionsStatusDeploying
+const QueuesResponseQueuesFunctionStatusDeploying = shared.QueuesResponseQueuesFunctionStatusDeploying
 
 // This is an alias to an internal value.
-const ListFunctionsResponseFunctionsStatusError = shared.ListFunctionsResponseFunctionsStatusError
+const QueuesResponseQueuesFunctionStatusError = shared.QueuesResponseQueuesFunctionStatusError
 
 // This is an alias to an internal value.
-const ListFunctionsResponseFunctionsStatusInactive = shared.ListFunctionsResponseFunctionsStatusInactive
+const QueuesResponseQueuesFunctionStatusInactive = shared.QueuesResponseQueuesFunctionStatusInactive
 
 // This is an alias to an internal value.
-const ListFunctionsResponseFunctionsStatusDeleted = shared.ListFunctionsResponseFunctionsStatusDeleted
-
-// Data Transfer Object(DTO) representing a spot instance
-//
-// This is an alias to an internal type.
-type ListFunctionsResponseFunctionsActiveInstance = shared.ListFunctionsResponseFunctionsActiveInstance
-
-// Instance status
-//
-// This is an alias to an internal type.
-type ListFunctionsResponseFunctionsActiveInstancesInstanceStatus = shared.ListFunctionsResponseFunctionsActiveInstancesInstanceStatus
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsActiveInstancesInstanceStatusActive = shared.ListFunctionsResponseFunctionsActiveInstancesInstanceStatusActive
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsActiveInstancesInstanceStatusErrored = shared.ListFunctionsResponseFunctionsActiveInstancesInstanceStatusErrored
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsActiveInstancesInstanceStatusPreempted = shared.ListFunctionsResponseFunctionsActiveInstancesInstanceStatusPreempted
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsActiveInstancesInstanceStatusDeleted = shared.ListFunctionsResponseFunctionsActiveInstancesInstanceStatusDeleted
-
-// Invocation request body format
-//
-// This is an alias to an internal type.
-type ListFunctionsResponseFunctionsAPIBodyFormat = shared.ListFunctionsResponseFunctionsAPIBodyFormat
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsAPIBodyFormatPredictV2 = shared.ListFunctionsResponseFunctionsAPIBodyFormatPredictV2
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsAPIBodyFormatCustom = shared.ListFunctionsResponseFunctionsAPIBodyFormatCustom
-
-// Data Transfer Object(DTO) representing a container environment entry
-//
-// This is an alias to an internal type.
-type ListFunctionsResponseFunctionsContainerEnvironment = shared.ListFunctionsResponseFunctionsContainerEnvironment
-
-// Data Transfer Object(DTO) representing a function ne
-//
-// This is an alias to an internal type.
-type ListFunctionsResponseFunctionsHealth = shared.ListFunctionsResponseFunctionsHealth
-
-// HTTP/gPRC protocol type for health endpoint
-//
-// This is an alias to an internal type.
-type ListFunctionsResponseFunctionsHealthProtocol = shared.ListFunctionsResponseFunctionsHealthProtocol
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsHealthProtocolHTTP = shared.ListFunctionsResponseFunctionsHealthProtocolHTTP
-
-// This is an alias to an internal value.
-const ListFunctionsResponseFunctionsHealthProtocolGRpc = shared.ListFunctionsResponseFunctionsHealthProtocolGRpc
-
-// Data Transfer Object(DTO) representing an artifact
-//
-// This is an alias to an internal type.
-type ListFunctionsResponseFunctionsModel = shared.ListFunctionsResponseFunctionsModel
-
-// Data Transfer Object(DTO) representing an artifact
-//
-// This is an alias to an internal type.
-type ListFunctionsResponseFunctionsResource = shared.ListFunctionsResponseFunctionsResource
+const QueuesResponseQueuesFunctionStatusDeleted = shared.QueuesResponseQueuesFunctionStatusDeleted

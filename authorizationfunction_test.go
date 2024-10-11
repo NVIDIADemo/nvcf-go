@@ -8,9 +8,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 func TestAuthorizationFunctionAddWithOptionalParams(t *testing.T) {
@@ -23,12 +24,13 @@ func TestAuthorizationFunctionAddWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Authorizations.Functions.Add(
 		context.TODO(),
 		"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		nvcf.AuthorizationFunctionAddParams{
-			AuthorizedParty: nvcf.F(nvcf.AuthorizationFunctionAddParamsAuthorizedParty{
+			AuthorizedParty: nvcf.F(shared.AuthorizedPartyDTOParam{
 				NcaID:    nvcf.F("ncaId"),
 				ClientID: nvcf.F("clientId"),
 			}),
@@ -53,12 +55,13 @@ func TestAuthorizationFunctionRemoveWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Authorizations.Functions.Remove(
 		context.TODO(),
 		"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		nvcf.AuthorizationFunctionRemoveParams{
-			AuthorizedParty: nvcf.F(nvcf.AuthorizationFunctionRemoveParamsAuthorizedParty{
+			AuthorizedParty: nvcf.F(shared.AuthorizedPartyDTOParam{
 				NcaID:    nvcf.F("ncaId"),
 				ClientID: nvcf.F("clientId"),
 			}),

@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 func TestEnvelopeFunctionInvocationFunctionVersionInvokeWithOptionalParams(t *testing.T) {
@@ -23,6 +23,7 @@ func TestEnvelopeFunctionInvocationFunctionVersionInvokeWithOptionalParams(t *te
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.EnvelopeFunctionInvocation.Functions.Versions.Invoke(
 		context.TODO(),

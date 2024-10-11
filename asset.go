@@ -6,10 +6,10 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/brevdev/nvcf-go/internal/apijson"
-	"github.com/brevdev/nvcf-go/internal/param"
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/internal/apijson"
+	"github.com/NVIDIADemo/nvcf-go/internal/param"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 // AssetService contains methods and other services that help with interacting with
@@ -44,7 +44,7 @@ func (r *AssetService) New(ctx context.Context, body AssetNewParams, opts ...opt
 
 // List assets owned by the current NVIDIA Cloud Account. Requires either a bearer
 // token or an api-key with invoke_function scope in the HTTP Authorization header.
-func (r *AssetService) List(ctx context.Context, opts ...option.RequestOption) (res *ListAssetsResponse, err error) {
+func (r *AssetService) GetAll(ctx context.Context, opts ...option.RequestOption) (res *ListAssetsResponse, err error) {
 	opts = append(r.Options[:], opts...)
 	path := "v2/nvcf/assets"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)

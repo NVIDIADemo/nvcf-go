@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
-	"github.com/brevdev/nvcf-go/shared"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 // QueueFunctionVersionService contains methods and other services that help with
@@ -37,7 +37,7 @@ func NewQueueFunctionVersionService(opts ...option.RequestOption) (r *QueueFunct
 // includes details of all the queues. If the specified function is public, then
 // Account Admin cannot perform this operation. Requires a bearer token or an
 // api-key with 'queue_details' scope in the HTTP Authorization header.
-func (r *QueueFunctionVersionService) List(ctx context.Context, functionID string, versionID string, opts ...option.RequestOption) (res *shared.GetQueuesResponse, err error) {
+func (r *QueueFunctionVersionService) GetAll(ctx context.Context, functionID string, versionID string, opts ...option.RequestOption) (res *shared.QueuesResponse, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")

@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/brevdev/nvcf-go/internal/param"
+	"github.com/NVIDIADemo/nvcf-go/internal/param"
 )
 
 var encoders sync.Map // map[encoderEntry]encoderFunc

@@ -10,12 +10,12 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/brevdev/nvcf-go/internal/apijson"
-	"github.com/brevdev/nvcf-go/internal/apiquery"
-	"github.com/brevdev/nvcf-go/internal/param"
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
-	"github.com/brevdev/nvcf-go/shared"
+	"github.com/NVIDIADemo/nvcf-go/internal/apijson"
+	"github.com/NVIDIADemo/nvcf-go/internal/apiquery"
+	"github.com/NVIDIADemo/nvcf-go/internal/param"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 // FunctionDeploymentFunctionVersionService contains methods and other services
@@ -102,7 +102,7 @@ func (r *FunctionDeploymentFunctionVersionService) Update(ctx context.Context, f
 // terminating the instances. If the specified function version is public, then
 // Account Admin cannot perform this operation. Access to this endpoint mandates a
 // bearer token with 'deploy_function' scope in the HTTP Authorization header.
-func (r *FunctionDeploymentFunctionVersionService) Delete(ctx context.Context, functionID string, functionVersionID string, body FunctionDeploymentFunctionVersionDeleteParams, opts ...option.RequestOption) (res *shared.FunctionResponse, err error) {
+func (r *FunctionDeploymentFunctionVersionService) Delete(ctx context.Context, functionID string, functionVersionID string, body FunctionDeploymentFunctionVersionDeleteParams, opts ...option.RequestOption) (res *shared.Function, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")

@@ -6,9 +6,9 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/brevdev/nvcf-go/internal/apijson"
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/internal/apijson"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 // ClusterGroupsAndGPUClusterGroupService contains methods and other services that
@@ -34,7 +34,7 @@ func NewClusterGroupsAndGPUClusterGroupService(opts ...option.RequestOption) (r 
 // groups defined specifically in the current account and publicly available
 // cluster groups such as GFN, OCI, etc. Requires a bearer token with
 // 'list_cluster_groups' scope in HTTP Authorization header.
-func (r *ClusterGroupsAndGPUClusterGroupService) List(ctx context.Context, opts ...option.RequestOption) (res *ClusterGroupsResponse, err error) {
+func (r *ClusterGroupsAndGPUClusterGroupService) GetAll(ctx context.Context, opts ...option.RequestOption) (res *ClusterGroupsResponse, err error) {
 	opts = append(r.Options[:], opts...)
 	path := "v2/nvcf/clusterGroups"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)

@@ -7,9 +7,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 func TestUsage(t *testing.T) {
@@ -22,6 +22,7 @@ func TestUsage(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	createFunctionResponse, err := client.NVCF.Functions.New(context.TODO(), nvcf.NVCFFunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
