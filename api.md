@@ -13,7 +13,7 @@
 - <a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared#FunctionsResponse">FunctionsResponse</a>
 - <a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared#HealthDTO">HealthDTO</a>
 - <a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared#InvokeFunctionResponse">InvokeFunctionResponse</a>
-- <a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared#Queues">Queues</a>
+- <a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared#QueuesResponse">QueuesResponse</a>
 
 # UserSecretManagement
 
@@ -180,13 +180,13 @@ Methods:
 
 Methods:
 
-- <code title="get /v2/nvcf/queues/functions/{functionId}">client.Queues.Functions.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go#QueueFunctionService.GetAll">GetAll</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, functionID <a href="https://pkg.go.dev/builtin#string">string</a>) (<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared#Queues">Queues</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
+- <code title="get /v2/nvcf/queues/functions/{functionId}">client.Queues.Functions.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go#QueueFunctionService.GetAll">GetAll</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, functionID <a href="https://pkg.go.dev/builtin#string">string</a>) (<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared#QueuesResponse">QueuesResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 
 ### Versions
 
 Methods:
 
-- <code title="get /v2/nvcf/queues/functions/{functionId}/versions/{versionId}">client.Queues.Functions.Versions.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go#QueueFunctionVersionService.GetAll">GetAll</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, functionID <a href="https://pkg.go.dev/builtin#string">string</a>, versionID <a href="https://pkg.go.dev/builtin#string">string</a>) (<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared#Queues">Queues</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
+- <code title="get /v2/nvcf/queues/functions/{functionId}/versions/{versionId}">client.Queues.Functions.Versions.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go#QueueFunctionVersionService.GetAll">GetAll</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, functionID <a href="https://pkg.go.dev/builtin#string">string</a>, versionID <a href="https://pkg.go.dev/builtin#string">string</a>) (<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared">shared</a>.<a href="https://pkg.go.dev/github.com/NVIDIADemo/nvcf-go/shared#QueuesResponse">QueuesResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 
 ## Position
 
