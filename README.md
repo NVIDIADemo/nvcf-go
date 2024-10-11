@@ -45,10 +45,13 @@ import (
 	"fmt"
 
 	"github.com/brevdev/nvcf-go"
+	"github.com/brevdev/nvcf-go/option"
 )
 
 func main() {
-	client := nvcf.NewClient()
+	client := nvcf.NewClient(
+		option.WithAuthToken("My Auth Token"), // defaults to os.LookupEnv("NVCF_AUTH_TOKEN")
+	)
 	createFunctionResponse, err := client.NVCF.Functions.New(context.TODO(), nvcf.NVCFFunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),

@@ -23,6 +23,7 @@ func TestAssetNew(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Assets.New(context.TODO(), nvcf.AssetNewParams{
 		ContentType: nvcf.F("contentType"),
@@ -47,6 +48,7 @@ func TestAssetList(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Assets.List(context.TODO())
 	if err != nil {

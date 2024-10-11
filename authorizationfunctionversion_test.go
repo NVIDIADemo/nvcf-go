@@ -23,6 +23,7 @@ func TestAuthorizationFunctionVersionAddWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Authorizations.Functions.Versions.Add(
 		context.TODO(),
@@ -54,6 +55,7 @@ func TestAuthorizationFunctionVersionRemoveWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Authorizations.Functions.Versions.Remove(
 		context.TODO(),

@@ -23,6 +23,7 @@ func TestNVCFFunctionNewWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Functions.New(context.TODO(), nvcf.NVCFFunctionNewParams{
 		InferenceURL:  nvcf.F("https://example.com"),
@@ -88,6 +89,7 @@ func TestNVCFFunctionListWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Functions.List(context.TODO(), nvcf.NVCFFunctionListParams{
 		Visibility: nvcf.F([]nvcf.NVCFFunctionListParamsVisibility{nvcf.NVCFFunctionListParamsVisibilityAuthorized}),

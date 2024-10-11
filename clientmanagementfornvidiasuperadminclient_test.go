@@ -23,6 +23,7 @@ func TestClientManagementForNVIDIASuperAdminClientGet(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.ClientManagementForNVIDIASuperAdmins.Clients.Get(context.TODO(), "clientId")
 	if err != nil {

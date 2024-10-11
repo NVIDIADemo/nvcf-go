@@ -23,6 +23,7 @@ func TestEnvelopeFunctionInvocationExecStatusGet(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.EnvelopeFunctionInvocation.Exec.Status.Get(context.TODO(), "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 	if err != nil {

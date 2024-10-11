@@ -23,6 +23,7 @@ func TestFunctionManagementFunctionVersionGet(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.FunctionManagement.Functions.Versions.Get(
 		context.TODO(),
@@ -48,6 +49,7 @@ func TestFunctionManagementFunctionVersionUpdateWithOptionalParams(t *testing.T)
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.FunctionManagement.Functions.Versions.Update(
 		context.TODO(),
@@ -76,6 +78,7 @@ func TestFunctionManagementFunctionVersionDelete(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	err := client.FunctionManagement.Functions.Versions.Delete(
 		context.TODO(),

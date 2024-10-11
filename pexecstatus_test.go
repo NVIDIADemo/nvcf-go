@@ -23,6 +23,7 @@ func TestPexecStatusGetWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Pexec.Status.Get(
 		context.TODO(),

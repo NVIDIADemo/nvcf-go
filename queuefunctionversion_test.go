@@ -23,6 +23,7 @@ func TestQueueFunctionVersionList(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Queues.Functions.Versions.List(
 		context.TODO(),

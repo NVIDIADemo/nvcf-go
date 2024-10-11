@@ -22,6 +22,7 @@ func TestUsage(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	createFunctionResponse, err := client.NVCF.Functions.New(context.TODO(), nvcf.NVCFFunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),

@@ -227,3 +227,11 @@ func WithRequestTimeout(dur time.Duration) RequestOption {
 func WithEnvironmentProduction() RequestOption {
 	return WithBaseURL("https://api.nvcf.nvidia.com/")
 }
+
+// WithAuthToken returns a RequestOption that sets the client setting "auth_token".
+func WithAuthToken(value string) RequestOption {
+	return func(r *requestconfig.RequestConfig) error {
+		r.AuthToken = value
+		return r.Apply(WithHeader("authorization", fmt.Sprintf("Bearer %s", r.AuthToken)))
+	}
+}

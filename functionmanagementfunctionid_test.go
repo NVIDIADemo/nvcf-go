@@ -23,6 +23,7 @@ func TestFunctionManagementFunctionIDListWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.FunctionManagement.Functions.IDs.List(context.TODO(), nvcf.FunctionManagementFunctionIDListParams{
 		Visibility: nvcf.F([]nvcf.FunctionManagementFunctionIDListParamsVisibility{nvcf.FunctionManagementFunctionIDListParamsVisibilityAuthorized}),

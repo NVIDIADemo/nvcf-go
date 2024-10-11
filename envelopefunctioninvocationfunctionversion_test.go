@@ -23,6 +23,7 @@ func TestEnvelopeFunctionInvocationFunctionVersionInvokeWithOptionalParams(t *te
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.EnvelopeFunctionInvocation.Functions.Versions.Invoke(
 		context.TODO(),

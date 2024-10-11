@@ -23,6 +23,7 @@ func TestNVCFAuthorizationFunctionVersionGet(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Authorizations.Functions.Versions.Get(
 		context.TODO(),
@@ -48,6 +49,7 @@ func TestNVCFAuthorizationFunctionVersionDelete(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Authorizations.Functions.Versions.Delete(
 		context.TODO(),
@@ -73,6 +75,7 @@ func TestNVCFAuthorizationFunctionVersionAuthorize(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Authorizations.Functions.Versions.Authorize(
 		context.TODO(),

@@ -23,6 +23,7 @@ func TestFunctionInvocationFunctionInvokeWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.FunctionInvocation.Functions.Invoke(
 		context.TODO(),
