@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-10-11)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/NVIDIADemo/nvcf-go/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([#10](https://github.com/NVIDIADemo/nvcf-go/issues/10)) ([c7b6da9](https://github.com/NVIDIADemo/nvcf-go/commit/c7b6da9d2941dc26373a5a24f45e2ee98f59fda6))
+
 ## 0.1.0-alpha.2 (2024-10-11)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/NVIDIADemo/nvcf-go/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)

@@ -24,7 +24,7 @@ Or to pin the version:
 <!-- x-release-please-start-version -->
 
 ```sh
-go get -u 'github.com/NVIDIADemo/nvcf-go@v0.1.0-alpha.2'
+go get -u 'github.com/NVIDIADemo/nvcf-go@v0.1.0-alpha.3'
 ```
 
 <!-- x-release-please-end -->
@@ -52,14 +52,14 @@ func main() {
 	client := nvcf.NewClient(
 		option.WithAuthToken("My Auth Token"), // defaults to os.LookupEnv("NVCF_AUTH_TOKEN")
 	)
-	createFunctionResponse, err := client.Functions.New(context.TODO(), nvcf.FunctionNewParams{
+	functionDTO, err := client.Functions.New(context.TODO(), nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Printf("%+v\n", createFunctionResponse.Function)
+	fmt.Printf("%+v\n", functionDTO.ID)
 }
 
 ```
