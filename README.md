@@ -52,7 +52,7 @@ func main() {
 	client := nvcf.NewClient(
 		option.WithAuthToken("My Auth Token"), // defaults to os.LookupEnv("NVCF_AUTH_TOKEN")
 	)
-	createFunctionResponse, err := client.NVCF.Functions.New(context.TODO(), nvcf.NVCFFunctionNewParams{
+	createFunctionResponse, err := client.Functions.New(context.TODO(), nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
@@ -148,7 +148,7 @@ client := nvcf.NewClient(
 	option.WithHeader("X-Some-Header", "custom_header_info"),
 )
 
-client.NVCF.Functions.New(context.TODO(), ...,
+client.Functions.New(context.TODO(), ...,
 	// Override the header
 	option.WithHeader("X-Some-Header", "some_other_custom_header_info"),
 	// Add an undocumented field to the request body, using sjson syntax
@@ -177,7 +177,7 @@ When the API returns a non-success status code, we return an error with type
 To handle errors, we recommend that you use the `errors.As` pattern:
 
 ```go
-_, err := client.NVCF.Functions.New(context.TODO(), nvcf.NVCFFunctionNewParams{
+_, err := client.Functions.New(context.TODO(), nvcf.FunctionNewParams{
 	InferenceURL: nvcf.F("https://example.com"),
 	Name:         nvcf.F("x"),
 })
@@ -205,9 +205,9 @@ To set a per-retry timeout, use `option.WithRequestTimeout()`.
 // This sets the timeout for the request, including all the retries.
 ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 defer cancel()
-client.NVCF.Functions.New(
+client.Functions.New(
 	ctx,
-	nvcf.NVCFFunctionNewParams{
+	nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	},
@@ -244,9 +244,9 @@ client := nvcf.NewClient(
 )
 
 // Override per-request:
-client.NVCF.Functions.New(
+client.Functions.New(
 	context.TODO(),
-	nvcf.NVCFFunctionNewParams{
+	nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	},

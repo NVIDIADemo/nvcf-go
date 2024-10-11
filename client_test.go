@@ -37,7 +37,7 @@ func TestUserAgentHeader(t *testing.T) {
 			},
 		}),
 	)
-	client.NVCF.Functions.New(context.Background(), nvcf.NVCFFunctionNewParams{
+	client.Functions.New(context.Background(), nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
@@ -63,7 +63,7 @@ func TestRetryAfter(t *testing.T) {
 			},
 		}),
 	)
-	res, err := client.NVCF.Functions.New(context.Background(), nvcf.NVCFFunctionNewParams{
+	res, err := client.Functions.New(context.Background(), nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
@@ -100,7 +100,7 @@ func TestDeleteRetryCountHeader(t *testing.T) {
 		}),
 		option.WithHeaderDel("X-Stainless-Retry-Count"),
 	)
-	res, err := client.NVCF.Functions.New(context.Background(), nvcf.NVCFFunctionNewParams{
+	res, err := client.Functions.New(context.Background(), nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
@@ -132,7 +132,7 @@ func TestOverwriteRetryCountHeader(t *testing.T) {
 		}),
 		option.WithHeader("X-Stainless-Retry-Count", "42"),
 	)
-	res, err := client.NVCF.Functions.New(context.Background(), nvcf.NVCFFunctionNewParams{
+	res, err := client.Functions.New(context.Background(), nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
@@ -163,7 +163,7 @@ func TestRetryAfterMs(t *testing.T) {
 			},
 		}),
 	)
-	res, err := client.NVCF.Functions.New(context.Background(), nvcf.NVCFFunctionNewParams{
+	res, err := client.Functions.New(context.Background(), nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
@@ -188,7 +188,7 @@ func TestContextCancel(t *testing.T) {
 	)
 	cancelCtx, cancel := context.WithCancel(context.Background())
 	cancel()
-	res, err := client.NVCF.Functions.New(cancelCtx, nvcf.NVCFFunctionNewParams{
+	res, err := client.Functions.New(cancelCtx, nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
@@ -210,7 +210,7 @@ func TestContextCancelDelay(t *testing.T) {
 	)
 	cancelCtx, cancel := context.WithTimeout(context.Background(), 2*time.Millisecond)
 	defer cancel()
-	res, err := client.NVCF.Functions.New(cancelCtx, nvcf.NVCFFunctionNewParams{
+	res, err := client.Functions.New(cancelCtx, nvcf.FunctionNewParams{
 		InferenceURL: nvcf.F("https://example.com"),
 		Name:         nvcf.F("x"),
 	})
@@ -238,7 +238,7 @@ func TestContextDeadline(t *testing.T) {
 				},
 			}),
 		)
-		res, err := client.NVCF.Functions.New(deadlineCtx, nvcf.NVCFFunctionNewParams{
+		res, err := client.Functions.New(deadlineCtx, nvcf.FunctionNewParams{
 			InferenceURL: nvcf.F("https://example.com"),
 			Name:         nvcf.F("x"),
 		})
