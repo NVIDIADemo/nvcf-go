@@ -102,7 +102,7 @@ func (r *FunctionDeploymentFunctionVersionService) Update(ctx context.Context, f
 // terminating the instances. If the specified function version is public, then
 // Account Admin cannot perform this operation. Access to this endpoint mandates a
 // bearer token with 'deploy_function' scope in the HTTP Authorization header.
-func (r *FunctionDeploymentFunctionVersionService) Delete(ctx context.Context, functionID string, functionVersionID string, body FunctionDeploymentFunctionVersionDeleteParams, opts ...option.RequestOption) (res *shared.FunctionResponse, err error) {
+func (r *FunctionDeploymentFunctionVersionService) Delete(ctx context.Context, functionID string, functionVersionID string, body FunctionDeploymentFunctionVersionDeleteParams, opts ...option.RequestOption) (res *shared.Function, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")

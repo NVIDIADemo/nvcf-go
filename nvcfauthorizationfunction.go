@@ -36,30 +36,13 @@ func NewNVCFAuthorizationFunctionService(opts ...option.RequestOption) (r *NVCFA
 	return
 }
 
-// Lists NVIDIA Cloud Account IDs that are authorized to invoke any version of the
-// specified function. The response includes an array showing authorized accounts
-// for each version. Individual versions of a function can have their own
-// authorized accounts. So, each object in the array can have different authorized
-// accounts listed. Access to this functionality mandates the inclusion of a bearer
-// token with the 'authorize_clients' scope in the HTTP Authorization header
-func (r *NVCFAuthorizationFunctionService) List(ctx context.Context, functionID string, opts ...option.RequestOption) (res *ListAuthorizedPartiesResponse, err error) {
-	opts = append(r.Options[:], opts...)
-	if functionID == "" {
-		err = errors.New("missing required functionId parameter")
-		return
-	}
-	path := fmt.Sprintf("v2/nvcf/authorizations/functions/%s", functionID)
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
-}
-
 // Deletes all the extra NVIDIA Cloud Accounts that were authorized to invoke the
 // function and all its versions. If a function version has its own set of
 // authorized accounts, those are not deleted. If the specified function is public,
 // then Account Admin cannot perform this operation. Access to this functionality
 // mandates the inclusion of a bearer token with the 'authorize_clients' scope in
 // the HTTP Authorization header
-func (r *NVCFAuthorizationFunctionService) Delete(ctx context.Context, functionID string, opts ...option.RequestOption) (res *shared.AuthorizedPartiesResponse, err error) {
+func (r *NVCFAuthorizationFunctionService) Delete(ctx context.Context, functionID string, opts ...option.RequestOption) (res *shared.AuthorizedParties, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")
@@ -77,7 +60,7 @@ func (r *NVCFAuthorizationFunctionService) Delete(ctx context.Context, functionI
 // authorized accounts will be overwritten by the newly specified authorized
 // accounts. Access to this functionality mandates the inclusion of a bearer token
 // with the 'authorize_clients' scope in the HTTP Authorization header
-func (r *NVCFAuthorizationFunctionService) Authorize(ctx context.Context, functionID string, body NVCFAuthorizationFunctionAuthorizeParams, opts ...option.RequestOption) (res *shared.AuthorizedPartiesResponse, err error) {
+func (r *NVCFAuthorizationFunctionService) Authorize(ctx context.Context, functionID string, body NVCFAuthorizationFunctionAuthorizeParams, opts ...option.RequestOption) (res *shared.AuthorizedParties, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")
@@ -85,6 +68,23 @@ func (r *NVCFAuthorizationFunctionService) Authorize(ctx context.Context, functi
 	}
 	path := fmt.Sprintf("v2/nvcf/authorizations/functions/%s", functionID)
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
+	return
+}
+
+// Lists NVIDIA Cloud Account IDs that are authorized to invoke any version of the
+// specified function. The response includes an array showing authorized accounts
+// for each version. Individual versions of a function can have their own
+// authorized accounts. So, each object in the array can have different authorized
+// accounts listed. Access to this functionality mandates the inclusion of a bearer
+// token with the 'authorize_clients' scope in the HTTP Authorization header
+func (r *NVCFAuthorizationFunctionService) GetAll(ctx context.Context, functionID string, opts ...option.RequestOption) (res *ListAuthorizedPartiesResponse, err error) {
+	opts = append(r.Options[:], opts...)
+	if functionID == "" {
+		err = errors.New("missing required functionId parameter")
+		return
+	}
+	path := fmt.Sprintf("v2/nvcf/authorizations/functions/%s", functionID)
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
 	return
 }
 
@@ -118,7 +118,7 @@ type ListAuthorizedPartiesResponseFunction struct {
 	// NVIDIA Cloud Account Id
 	NcaID string `json:"ncaId,required"`
 	// Authorized parties allowed to invoke the function
-	AuthorizedParties []ListAuthorizedPartiesResponseFunctionsAuthorizedParty `json:"authorizedParties"`
+	AuthorizedParties []shared.AuthorizedPartyDTO `json:"authorizedParties"`
 	// Function version id
 	VersionID string                                    `json:"versionId" format:"uuid"`
 	JSON      listAuthorizedPartiesResponseFunctionJSON `json:"-"`
@@ -143,49 +143,11 @@ func (r listAuthorizedPartiesResponseFunctionJSON) RawJSON() string {
 	return r.raw
 }
 
-// Data Transfer Object(DTO) representing an authorized party.
-type ListAuthorizedPartiesResponseFunctionsAuthorizedParty struct {
-	// NVIDIA Cloud Account authorized to invoke the function
-	NcaID string `json:"ncaId,required"`
-	// Client Id -- 'sub' claim in the JWT. This field should not be specified anymore.
-	ClientID string                                                    `json:"clientId"`
-	JSON     listAuthorizedPartiesResponseFunctionsAuthorizedPartyJSON `json:"-"`
-}
-
-// listAuthorizedPartiesResponseFunctionsAuthorizedPartyJSON contains the JSON
-// metadata for the struct [ListAuthorizedPartiesResponseFunctionsAuthorizedParty]
-type listAuthorizedPartiesResponseFunctionsAuthorizedPartyJSON struct {
-	NcaID       apijson.Field
-	ClientID    apijson.Field
-	raw         string
-	ExtraFields map[string]apijson.Field
-}
-
-func (r *ListAuthorizedPartiesResponseFunctionsAuthorizedParty) UnmarshalJSON(data []byte) (err error) {
-	return apijson.UnmarshalRoot(data, r)
-}
-
-func (r listAuthorizedPartiesResponseFunctionsAuthorizedPartyJSON) RawJSON() string {
-	return r.raw
-}
-
 type NVCFAuthorizationFunctionAuthorizeParams struct {
 	// Parties authorized to invoke function
-	AuthorizedParties param.Field[[]NVCFAuthorizationFunctionAuthorizeParamsAuthorizedParty] `json:"authorizedParties,required"`
+	AuthorizedParties param.Field[[]shared.AuthorizedPartyDTOParam] `json:"authorizedParties,required"`
 }
 
 func (r NVCFAuthorizationFunctionAuthorizeParams) MarshalJSON() (data []byte, err error) {
-	return apijson.MarshalRoot(r)
-}
-
-// Data Transfer Object(DTO) representing an authorized party.
-type NVCFAuthorizationFunctionAuthorizeParamsAuthorizedParty struct {
-	// NVIDIA Cloud Account authorized to invoke the function
-	NcaID param.Field[string] `json:"ncaId,required"`
-	// Client Id -- 'sub' claim in the JWT. This field should not be specified anymore.
-	ClientID param.Field[string] `json:"clientId"`
-}
-
-func (r NVCFAuthorizationFunctionAuthorizeParamsAuthorizedParty) MarshalJSON() (data []byte, err error) {
 	return apijson.MarshalRoot(r)
 }

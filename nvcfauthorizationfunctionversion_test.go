@@ -11,6 +11,7 @@ import (
 	"github.com/NVIDIADemo/nvcf-go"
 	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
 	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 func TestNVCFAuthorizationFunctionVersionGet(t *testing.T) {
@@ -82,7 +83,7 @@ func TestNVCFAuthorizationFunctionVersionAuthorize(t *testing.T) {
 		"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		nvcf.NVCFAuthorizationFunctionVersionAuthorizeParams{
-			AuthorizedParties: nvcf.F([]nvcf.NVCFAuthorizationFunctionVersionAuthorizeParamsAuthorizedParty{{
+			AuthorizedParties: nvcf.F([]shared.AuthorizedPartyDTOParam{{
 				NcaID:    nvcf.F("ncaId"),
 				ClientID: nvcf.F("clientId"),
 			}, {

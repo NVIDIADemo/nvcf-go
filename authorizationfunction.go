@@ -44,7 +44,7 @@ func NewAuthorizationFunctionService(opts ...option.RequestOption) (r *Authoriza
 // code 409. If a function is public, then Account Admin cannot perform this
 // operation. Access to this functionality mandates the inclusion of a bearer token
 // with the 'authorize_clients' scope in the HTTP Authorization header
-func (r *AuthorizationFunctionService) Add(ctx context.Context, functionID string, body AuthorizationFunctionAddParams, opts ...option.RequestOption) (res *shared.AuthorizedPartiesResponse, err error) {
+func (r *AuthorizationFunctionService) Add(ctx context.Context, functionID string, body AuthorizationFunctionAddParams, opts ...option.RequestOption) (res *shared.AuthorizedParties, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")
@@ -63,7 +63,7 @@ func (r *AuthorizationFunctionService) Add(ctx context.Context, functionID strin
 // status 400. If the specified function is public, then Account Admin cannot
 // perform this operation. Access to this functionality mandates the inclusion of a
 // bearer token with the 'authorize_clients' scope in the HTTP Authorization header
-func (r *AuthorizationFunctionService) Remove(ctx context.Context, functionID string, body AuthorizationFunctionRemoveParams, opts ...option.RequestOption) (res *shared.AuthorizedPartiesResponse, err error) {
+func (r *AuthorizationFunctionService) Remove(ctx context.Context, functionID string, body AuthorizationFunctionRemoveParams, opts ...option.RequestOption) (res *shared.AuthorizedParties, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")
@@ -76,42 +76,18 @@ func (r *AuthorizationFunctionService) Remove(ctx context.Context, functionID st
 
 type AuthorizationFunctionAddParams struct {
 	// Data Transfer Object(DTO) representing an authorized party.
-	AuthorizedParty param.Field[AuthorizationFunctionAddParamsAuthorizedParty] `json:"authorizedParty,required"`
+	AuthorizedParty param.Field[shared.AuthorizedPartyDTOParam] `json:"authorizedParty,required"`
 }
 
 func (r AuthorizationFunctionAddParams) MarshalJSON() (data []byte, err error) {
 	return apijson.MarshalRoot(r)
 }
 
-// Data Transfer Object(DTO) representing an authorized party.
-type AuthorizationFunctionAddParamsAuthorizedParty struct {
-	// NVIDIA Cloud Account authorized to invoke the function
-	NcaID param.Field[string] `json:"ncaId,required"`
-	// Client Id -- 'sub' claim in the JWT. This field should not be specified anymore.
-	ClientID param.Field[string] `json:"clientId"`
-}
-
-func (r AuthorizationFunctionAddParamsAuthorizedParty) MarshalJSON() (data []byte, err error) {
-	return apijson.MarshalRoot(r)
-}
-
 type AuthorizationFunctionRemoveParams struct {
 	// Data Transfer Object(DTO) representing an authorized party.
-	AuthorizedParty param.Field[AuthorizationFunctionRemoveParamsAuthorizedParty] `json:"authorizedParty,required"`
+	AuthorizedParty param.Field[shared.AuthorizedPartyDTOParam] `json:"authorizedParty,required"`
 }
 
 func (r AuthorizationFunctionRemoveParams) MarshalJSON() (data []byte, err error) {
-	return apijson.MarshalRoot(r)
-}
-
-// Data Transfer Object(DTO) representing an authorized party.
-type AuthorizationFunctionRemoveParamsAuthorizedParty struct {
-	// NVIDIA Cloud Account authorized to invoke the function
-	NcaID param.Field[string] `json:"ncaId,required"`
-	// Client Id -- 'sub' claim in the JWT. This field should not be specified anymore.
-	ClientID param.Field[string] `json:"clientId"`
-}
-
-func (r AuthorizationFunctionRemoveParamsAuthorizedParty) MarshalJSON() (data []byte, err error) {
 	return apijson.MarshalRoot(r)
 }

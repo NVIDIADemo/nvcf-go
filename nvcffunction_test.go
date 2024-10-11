@@ -11,6 +11,7 @@ import (
 	"github.com/NVIDIADemo/nvcf-go"
 	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
 	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 func TestNVCFFunctionNewWithOptionalParams(t *testing.T) {
@@ -43,10 +44,10 @@ func TestNVCFFunctionNewWithOptionalParams(t *testing.T) {
 		ContainerImage: nvcf.F("https://example.com"),
 		Description:    nvcf.F("description"),
 		FunctionType:   nvcf.F(nvcf.NVCFFunctionNewParamsFunctionTypeDefault),
-		Health: nvcf.F(nvcf.NVCFFunctionNewParamsHealth{
+		Health: nvcf.F(shared.HealthDTOParam{
 			ExpectedStatusCode: nvcf.F(int64(0)),
 			Port:               nvcf.F(int64(0)),
-			Protocol:           nvcf.F(nvcf.NVCFFunctionNewParamsHealthProtocolHTTP),
+			Protocol:           nvcf.F(shared.HealthDTOProtocolHTTP),
 			Timeout:            nvcf.F("PT10S"),
 			Uri:                nvcf.F("https://example.com"),
 		}),
@@ -79,7 +80,7 @@ func TestNVCFFunctionNewWithOptionalParams(t *testing.T) {
 	}
 }
 
-func TestNVCFFunctionListWithOptionalParams(t *testing.T) {
+func TestNVCFFunctionGetAllWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -91,8 +92,8 @@ func TestNVCFFunctionListWithOptionalParams(t *testing.T) {
 		option.WithBaseURL(baseURL),
 		option.WithAuthToken("My Auth Token"),
 	)
-	_, err := client.NVCF.Functions.List(context.TODO(), nvcf.NVCFFunctionListParams{
-		Visibility: nvcf.F([]nvcf.NVCFFunctionListParamsVisibility{nvcf.NVCFFunctionListParamsVisibilityAuthorized}),
+	_, err := client.NVCF.Functions.GetAll(context.TODO(), nvcf.NVCFFunctionGetAllParams{
+		Visibility: nvcf.F([]nvcf.NVCFFunctionGetAllParamsVisibility{nvcf.NVCFFunctionGetAllParamsVisibilityAuthorized}),
 	})
 	if err != nil {
 		var apierr *nvcf.Error

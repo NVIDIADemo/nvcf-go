@@ -52,7 +52,7 @@ func (r *NVCFFunctionVersionService) New(ctx context.Context, functionID string,
 // NVIDIA Cloud Account. Requires either a bearer token or an api-key with
 // 'list_functions' or 'list_functions_details' scopes in the HTTP Authorization
 // header.
-func (r *NVCFFunctionVersionService) List(ctx context.Context, functionID string, opts ...option.RequestOption) (res *shared.ListFunctionsResponse, err error) {
+func (r *NVCFFunctionVersionService) GetAll(ctx context.Context, functionID string, opts ...option.RequestOption) (res *shared.FunctionsResponse, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")
@@ -83,7 +83,7 @@ type NVCFFunctionVersionNewParams struct {
 	// DEFAULT.
 	FunctionType param.Field[NVCFFunctionVersionNewParamsFunctionType] `json:"functionType"`
 	// Data Transfer Object(DTO) representing a function ne
-	Health param.Field[NVCFFunctionVersionNewParamsHealth] `json:"health"`
+	Health param.Field[shared.HealthDTOParam] `json:"health"`
 	// Health endpoint for the container or the helmChart
 	HealthUri param.Field[string] `json:"healthUri" format:"uri"`
 	// Optional Helm Chart
@@ -147,40 +147,6 @@ const (
 func (r NVCFFunctionVersionNewParamsFunctionType) IsKnown() bool {
 	switch r {
 	case NVCFFunctionVersionNewParamsFunctionTypeDefault, NVCFFunctionVersionNewParamsFunctionTypeStreaming:
-		return true
-	}
-	return false
-}
-
-// Data Transfer Object(DTO) representing a function ne
-type NVCFFunctionVersionNewParamsHealth struct {
-	// Expected return status code considered as successful.
-	ExpectedStatusCode param.Field[int64] `json:"expectedStatusCode,required"`
-	// Port number where the health listener is running
-	Port param.Field[int64] `json:"port,required"`
-	// HTTP/gPRC protocol type for health endpoint
-	Protocol param.Field[NVCFFunctionVersionNewParamsHealthProtocol] `json:"protocol,required"`
-	// ISO 8601 duration string in PnDTnHnMn.nS format
-	Timeout param.Field[string] `json:"timeout,required" format:"PnDTnHnMn.nS"`
-	// Health endpoint for the container or the helmChart
-	Uri param.Field[string] `json:"uri,required" format:"uri"`
-}
-
-func (r NVCFFunctionVersionNewParamsHealth) MarshalJSON() (data []byte, err error) {
-	return apijson.MarshalRoot(r)
-}
-
-// HTTP/gPRC protocol type for health endpoint
-type NVCFFunctionVersionNewParamsHealthProtocol string
-
-const (
-	NVCFFunctionVersionNewParamsHealthProtocolHTTP NVCFFunctionVersionNewParamsHealthProtocol = "HTTP"
-	NVCFFunctionVersionNewParamsHealthProtocolGRpc NVCFFunctionVersionNewParamsHealthProtocol = "gRPC"
-)
-
-func (r NVCFFunctionVersionNewParamsHealthProtocol) IsKnown() bool {
-	switch r {
-	case NVCFFunctionVersionNewParamsHealthProtocolHTTP, NVCFFunctionVersionNewParamsHealthProtocolGRpc:
 		return true
 	}
 	return false
