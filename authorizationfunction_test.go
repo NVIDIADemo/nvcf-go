@@ -11,6 +11,7 @@ import (
 	"github.com/NVIDIADemo/nvcf-go"
 	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
 	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 func TestAuthorizationFunctionAddWithOptionalParams(t *testing.T) {
@@ -29,7 +30,7 @@ func TestAuthorizationFunctionAddWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		nvcf.AuthorizationFunctionAddParams{
-			AuthorizedParty: nvcf.F(nvcf.AuthorizationFunctionAddParamsAuthorizedParty{
+			AuthorizedParty: nvcf.F(shared.AuthorizedPartyDTOParam{
 				NcaID:    nvcf.F("ncaId"),
 				ClientID: nvcf.F("clientId"),
 			}),
@@ -60,7 +61,7 @@ func TestAuthorizationFunctionRemoveWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		nvcf.AuthorizationFunctionRemoveParams{
-			AuthorizedParty: nvcf.F(nvcf.AuthorizationFunctionRemoveParamsAuthorizedParty{
+			AuthorizedParty: nvcf.F(shared.AuthorizedPartyDTOParam{
 				NcaID:    nvcf.F("ncaId"),
 				ClientID: nvcf.F("clientId"),
 			}),
