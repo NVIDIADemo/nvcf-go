@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/brevdev/nvcf-go/internal/apijson"
-	"github.com/brevdev/nvcf-go/internal/param"
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
-	"github.com/brevdev/nvcf-go/shared"
+	"github.com/NVIDIADemo/nvcf-go/internal/apijson"
+	"github.com/NVIDIADemo/nvcf-go/internal/param"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 // EnvelopeFunctionInvocationFunctionVersionService contains methods and other

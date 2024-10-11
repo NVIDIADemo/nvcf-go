@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/brevdev/nvcf-go/internal/param"
+	"github.com/NVIDIADemo/nvcf-go/internal/param"
 )
 
 type Struct struct {

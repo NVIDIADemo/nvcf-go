@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 func TestQueuePositionGet(t *testing.T) {
@@ -23,6 +23,7 @@ func TestQueuePositionGet(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Queues.Position.Get(context.TODO(), "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 	if err != nil {

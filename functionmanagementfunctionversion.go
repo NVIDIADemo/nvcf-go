@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/brevdev/nvcf-go/internal/apijson"
-	"github.com/brevdev/nvcf-go/internal/param"
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
-	"github.com/brevdev/nvcf-go/shared"
+	"github.com/NVIDIADemo/nvcf-go/internal/apijson"
+	"github.com/NVIDIADemo/nvcf-go/internal/param"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 // FunctionManagementFunctionVersionService contains methods and other services
@@ -38,7 +38,7 @@ func NewFunctionManagementFunctionVersionService(opts ...option.RequestOption) (
 // authenticated NVIDIA Cloud Account. Requires either a bearer token or an api-key
 // with 'list_functions' or 'list_functions_details' scopes in the HTTP
 // Authorization header.
-func (r *FunctionManagementFunctionVersionService) Get(ctx context.Context, functionID string, functionVersionID string, opts ...option.RequestOption) (res *shared.FunctionResponse, err error) {
+func (r *FunctionManagementFunctionVersionService) Get(ctx context.Context, functionID string, functionVersionID string, opts ...option.RequestOption) (res *shared.Function, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")
@@ -57,7 +57,7 @@ func (r *FunctionManagementFunctionVersionService) Get(ctx context.Context, func
 // authenticated NVIDIA Cloud Account. Values specified in the payload completely
 // override the existing values. Requires a bearer token with 'update_function'
 // scope in the HTTP Authorization header.
-func (r *FunctionManagementFunctionVersionService) Update(ctx context.Context, functionID string, functionVersionID string, body FunctionManagementFunctionVersionUpdateParams, opts ...option.RequestOption) (res *shared.FunctionResponse, err error) {
+func (r *FunctionManagementFunctionVersionService) Update(ctx context.Context, functionID string, functionVersionID string, body FunctionManagementFunctionVersionUpdateParams, opts ...option.RequestOption) (res *shared.Function, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")

@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/brevdev/nvcf-go/internal/apijson"
-	"github.com/brevdev/nvcf-go/internal/apiquery"
-	"github.com/brevdev/nvcf-go/internal/param"
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/internal/apijson"
+	"github.com/NVIDIADemo/nvcf-go/internal/apiquery"
+	"github.com/NVIDIADemo/nvcf-go/internal/param"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 // FunctionManagementFunctionIDService contains methods and other services that
@@ -36,7 +36,7 @@ func NewFunctionManagementFunctionIDService(opts ...option.RequestOption) (r *Fu
 // Lists ids of all the functions in the authenticated NVIDIA Cloud Account.
 // Requires either a bearer token or an api-key with 'list_functions' or
 // 'list_functions_details' scopes in the HTTP Authorization header.
-func (r *FunctionManagementFunctionIDService) List(ctx context.Context, query FunctionManagementFunctionIDListParams, opts ...option.RequestOption) (res *ListFunctionIDsResponse, err error) {
+func (r *FunctionManagementFunctionIDService) GetAll(ctx context.Context, query FunctionManagementFunctionIDGetAllParams, opts ...option.RequestOption) (res *FunctionManagementFunctionIDGetAllResponse, err error) {
 	opts = append(r.Options[:], opts...)
 	path := "v2/nvcf/functions/ids"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, query, &res, opts...)
@@ -44,54 +44,54 @@ func (r *FunctionManagementFunctionIDService) List(ctx context.Context, query Fu
 }
 
 // Response body containing list of function ids in an account
-type ListFunctionIDsResponse struct {
+type FunctionManagementFunctionIDGetAllResponse struct {
 	// List of function ids
-	FunctionIDs []string                    `json:"functionIds,required" format:"uuid"`
-	JSON        listFunctionIDsResponseJSON `json:"-"`
+	FunctionIDs []string                                       `json:"functionIds,required" format:"uuid"`
+	JSON        functionManagementFunctionIDGetAllResponseJSON `json:"-"`
 }
 
-// listFunctionIDsResponseJSON contains the JSON metadata for the struct
-// [ListFunctionIDsResponse]
-type listFunctionIDsResponseJSON struct {
+// functionManagementFunctionIDGetAllResponseJSON contains the JSON metadata for
+// the struct [FunctionManagementFunctionIDGetAllResponse]
+type functionManagementFunctionIDGetAllResponseJSON struct {
 	FunctionIDs apijson.Field
 	raw         string
 	ExtraFields map[string]apijson.Field
 }
 
-func (r *ListFunctionIDsResponse) UnmarshalJSON(data []byte) (err error) {
+func (r *FunctionManagementFunctionIDGetAllResponse) UnmarshalJSON(data []byte) (err error) {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-func (r listFunctionIDsResponseJSON) RawJSON() string {
+func (r functionManagementFunctionIDGetAllResponseJSON) RawJSON() string {
 	return r.raw
 }
 
-type FunctionManagementFunctionIDListParams struct {
+type FunctionManagementFunctionIDGetAllParams struct {
 	// Query param 'visibility' indicates the kind of functions to be included in the
 	// response.
-	Visibility param.Field[[]FunctionManagementFunctionIDListParamsVisibility] `query:"visibility"`
+	Visibility param.Field[[]FunctionManagementFunctionIDGetAllParamsVisibility] `query:"visibility"`
 }
 
-// URLQuery serializes [FunctionManagementFunctionIDListParams]'s query parameters
-// as `url.Values`.
-func (r FunctionManagementFunctionIDListParams) URLQuery() (v url.Values) {
+// URLQuery serializes [FunctionManagementFunctionIDGetAllParams]'s query
+// parameters as `url.Values`.
+func (r FunctionManagementFunctionIDGetAllParams) URLQuery() (v url.Values) {
 	return apiquery.MarshalWithSettings(r, apiquery.QuerySettings{
 		ArrayFormat:  apiquery.ArrayQueryFormatComma,
 		NestedFormat: apiquery.NestedQueryFormatBrackets,
 	})
 }
 
-type FunctionManagementFunctionIDListParamsVisibility string
+type FunctionManagementFunctionIDGetAllParamsVisibility string
 
 const (
-	FunctionManagementFunctionIDListParamsVisibilityAuthorized FunctionManagementFunctionIDListParamsVisibility = "authorized"
-	FunctionManagementFunctionIDListParamsVisibilityPrivate    FunctionManagementFunctionIDListParamsVisibility = "private"
-	FunctionManagementFunctionIDListParamsVisibilityPublic     FunctionManagementFunctionIDListParamsVisibility = "public"
+	FunctionManagementFunctionIDGetAllParamsVisibilityAuthorized FunctionManagementFunctionIDGetAllParamsVisibility = "authorized"
+	FunctionManagementFunctionIDGetAllParamsVisibilityPrivate    FunctionManagementFunctionIDGetAllParamsVisibility = "private"
+	FunctionManagementFunctionIDGetAllParamsVisibilityPublic     FunctionManagementFunctionIDGetAllParamsVisibility = "public"
 )
 
-func (r FunctionManagementFunctionIDListParamsVisibility) IsKnown() bool {
+func (r FunctionManagementFunctionIDGetAllParamsVisibility) IsKnown() bool {
 	switch r {
-	case FunctionManagementFunctionIDListParamsVisibilityAuthorized, FunctionManagementFunctionIDListParamsVisibilityPrivate, FunctionManagementFunctionIDListParamsVisibilityPublic:
+	case FunctionManagementFunctionIDGetAllParamsVisibilityAuthorized, FunctionManagementFunctionIDGetAllParamsVisibilityPrivate, FunctionManagementFunctionIDGetAllParamsVisibilityPublic:
 		return true
 	}
 	return false

@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 func TestClientManagementForNVIDIASuperAdminClientGet(t *testing.T) {
@@ -23,6 +23,7 @@ func TestClientManagementForNVIDIASuperAdminClientGet(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.ClientManagementForNVIDIASuperAdmins.Clients.Get(context.TODO(), "clientId")
 	if err != nil {

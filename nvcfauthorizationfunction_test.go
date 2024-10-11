@@ -8,31 +8,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
-
-func TestNVCFAuthorizationFunctionList(t *testing.T) {
-	baseURL := "http://localhost:4010"
-	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
-		baseURL = envURL
-	}
-	if !testutil.CheckTestServer(t, baseURL) {
-		return
-	}
-	client := nvcf.NewClient(
-		option.WithBaseURL(baseURL),
-	)
-	_, err := client.NVCF.Authorizations.Functions.List(context.TODO(), "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-	if err != nil {
-		var apierr *nvcf.Error
-		if errors.As(err, &apierr) {
-			t.Log(string(apierr.DumpRequest(true)))
-		}
-		t.Fatalf("err should be nil: %s", err.Error())
-	}
-}
 
 func TestNVCFAuthorizationFunctionDelete(t *testing.T) {
 	baseURL := "http://localhost:4010"
@@ -44,6 +24,7 @@ func TestNVCFAuthorizationFunctionDelete(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Authorizations.Functions.Delete(context.TODO(), "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 	if err != nil {
@@ -65,12 +46,13 @@ func TestNVCFAuthorizationFunctionAuthorize(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Authorizations.Functions.Authorize(
 		context.TODO(),
 		"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		nvcf.NVCFAuthorizationFunctionAuthorizeParams{
-			AuthorizedParties: nvcf.F([]nvcf.NVCFAuthorizationFunctionAuthorizeParamsAuthorizedParty{{
+			AuthorizedParties: nvcf.F([]shared.AuthorizedPartyDTOParam{{
 				NcaID:    nvcf.F("ncaId"),
 				ClientID: nvcf.F("clientId"),
 			}, {
@@ -82,6 +64,28 @@ func TestNVCFAuthorizationFunctionAuthorize(t *testing.T) {
 			}}),
 		},
 	)
+	if err != nil {
+		var apierr *nvcf.Error
+		if errors.As(err, &apierr) {
+			t.Log(string(apierr.DumpRequest(true)))
+		}
+		t.Fatalf("err should be nil: %s", err.Error())
+	}
+}
+
+func TestNVCFAuthorizationFunctionGetAll(t *testing.T) {
+	baseURL := "http://localhost:4010"
+	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
+		baseURL = envURL
+	}
+	if !testutil.CheckTestServer(t, baseURL) {
+		return
+	}
+	client := nvcf.NewClient(
+		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
+	)
+	_, err := client.NVCF.Authorizations.Functions.GetAll(context.TODO(), "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 	if err != nil {
 		var apierr *nvcf.Error
 		if errors.As(err, &apierr) {

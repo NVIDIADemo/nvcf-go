@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/brevdev/nvcf-go/internal/apijson"
-	"github.com/brevdev/nvcf-go/internal/param"
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
-	"github.com/brevdev/nvcf-go/shared"
+	"github.com/NVIDIADemo/nvcf-go/internal/apijson"
+	"github.com/NVIDIADemo/nvcf-go/internal/param"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 // NVCFAuthorizationFunctionVersionService contains methods and other services that
@@ -39,7 +39,7 @@ func NewNVCFAuthorizationFunctionVersionService(opts ...option.RequestOption) (r
 // the function version and the inherited authorized accounts that were added at
 // the function level. Access to this functionality mandates the inclusion of a
 // bearer token with the 'authorize_clients' scope in the HTTP Authorization header
-func (r *NVCFAuthorizationFunctionVersionService) Get(ctx context.Context, functionID string, functionVersionID string, opts ...option.RequestOption) (res *shared.AuthorizedPartiesResponse, err error) {
+func (r *NVCFAuthorizationFunctionVersionService) Get(ctx context.Context, functionID string, functionVersionID string, opts ...option.RequestOption) (res *shared.AuthorizedParties, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")
@@ -60,7 +60,7 @@ func (r *NVCFAuthorizationFunctionVersionService) Get(ctx context.Context, funct
 // then Account Admin cannot perform this operation. Access to this functionality
 // mandates the inclusion of a bearer token with the 'authorize_clients' scope in
 // the HTTP Authorization header
-func (r *NVCFAuthorizationFunctionVersionService) Delete(ctx context.Context, functionID string, functionVersionID string, opts ...option.RequestOption) (res *shared.AuthorizedPartiesResponse, err error) {
+func (r *NVCFAuthorizationFunctionVersionService) Delete(ctx context.Context, functionID string, functionVersionID string, opts ...option.RequestOption) (res *shared.AuthorizedParties, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")
@@ -82,7 +82,7 @@ func (r *NVCFAuthorizationFunctionVersionService) Delete(ctx context.Context, fu
 // accounts will be overwritten by the newly specified authorized accounts. Access
 // to this functionality mandates the inclusion of a bearer token with the
 // 'authorize_clients' scope in the HTTP Authorization header
-func (r *NVCFAuthorizationFunctionVersionService) Authorize(ctx context.Context, functionID string, functionVersionID string, body NVCFAuthorizationFunctionVersionAuthorizeParams, opts ...option.RequestOption) (res *shared.AuthorizedPartiesResponse, err error) {
+func (r *NVCFAuthorizationFunctionVersionService) Authorize(ctx context.Context, functionID string, functionVersionID string, body NVCFAuthorizationFunctionVersionAuthorizeParams, opts ...option.RequestOption) (res *shared.AuthorizedParties, err error) {
 	opts = append(r.Options[:], opts...)
 	if functionID == "" {
 		err = errors.New("missing required functionId parameter")
@@ -99,21 +99,9 @@ func (r *NVCFAuthorizationFunctionVersionService) Authorize(ctx context.Context,
 
 type NVCFAuthorizationFunctionVersionAuthorizeParams struct {
 	// Parties authorized to invoke function
-	AuthorizedParties param.Field[[]NVCFAuthorizationFunctionVersionAuthorizeParamsAuthorizedParty] `json:"authorizedParties,required"`
+	AuthorizedParties param.Field[[]shared.AuthorizedPartyDTOParam] `json:"authorizedParties,required"`
 }
 
 func (r NVCFAuthorizationFunctionVersionAuthorizeParams) MarshalJSON() (data []byte, err error) {
-	return apijson.MarshalRoot(r)
-}
-
-// Data Transfer Object(DTO) representing an authorized party.
-type NVCFAuthorizationFunctionVersionAuthorizeParamsAuthorizedParty struct {
-	// NVIDIA Cloud Account authorized to invoke the function
-	NcaID param.Field[string] `json:"ncaId,required"`
-	// Client Id -- 'sub' claim in the JWT. This field should not be specified anymore.
-	ClientID param.Field[string] `json:"clientId"`
-}
-
-func (r NVCFAuthorizationFunctionVersionAuthorizeParamsAuthorizedParty) MarshalJSON() (data []byte, err error) {
 	return apijson.MarshalRoot(r)
 }

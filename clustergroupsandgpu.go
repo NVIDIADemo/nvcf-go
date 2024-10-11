@@ -3,7 +3,7 @@
 package nvcf
 
 import (
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 // ClusterGroupsAndGPUService contains methods and other services that help with

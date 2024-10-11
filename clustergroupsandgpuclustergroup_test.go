@@ -8,12 +8,12 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
-func TestClusterGroupsAndGPUClusterGroupList(t *testing.T) {
+func TestClusterGroupsAndGPUClusterGroupGetAll(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -23,8 +23,9 @@ func TestClusterGroupsAndGPUClusterGroupList(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
-	_, err := client.ClusterGroupsAndGPUs.ClusterGroups.List(context.TODO())
+	_, err := client.ClusterGroupsAndGPUs.ClusterGroups.GetAll(context.TODO())
 	if err != nil {
 		var apierr *nvcf.Error
 		if errors.As(err, &apierr) {

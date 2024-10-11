@@ -8,9 +8,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/shared"
 )
 
 func TestNVCFAuthorizationFunctionVersionGet(t *testing.T) {
@@ -23,6 +24,7 @@ func TestNVCFAuthorizationFunctionVersionGet(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Authorizations.Functions.Versions.Get(
 		context.TODO(),
@@ -48,6 +50,7 @@ func TestNVCFAuthorizationFunctionVersionDelete(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Authorizations.Functions.Versions.Delete(
 		context.TODO(),
@@ -73,13 +76,14 @@ func TestNVCFAuthorizationFunctionVersionAuthorize(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.NVCF.Authorizations.Functions.Versions.Authorize(
 		context.TODO(),
 		"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		nvcf.NVCFAuthorizationFunctionVersionAuthorizeParams{
-			AuthorizedParties: nvcf.F([]nvcf.NVCFAuthorizationFunctionVersionAuthorizeParamsAuthorizedParty{{
+			AuthorizedParties: nvcf.F([]shared.AuthorizedPartyDTOParam{{
 				NcaID:    nvcf.F("ncaId"),
 				ClientID: nvcf.F("clientId"),
 			}, {

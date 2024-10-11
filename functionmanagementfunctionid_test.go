@@ -8,12 +8,12 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
-func TestFunctionManagementFunctionIDListWithOptionalParams(t *testing.T) {
+func TestFunctionManagementFunctionIDGetAllWithOptionalParams(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -23,9 +23,10 @@ func TestFunctionManagementFunctionIDListWithOptionalParams(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
-	_, err := client.FunctionManagement.Functions.IDs.List(context.TODO(), nvcf.FunctionManagementFunctionIDListParams{
-		Visibility: nvcf.F([]nvcf.FunctionManagementFunctionIDListParamsVisibility{nvcf.FunctionManagementFunctionIDListParamsVisibilityAuthorized}),
+	_, err := client.FunctionManagement.Functions.IDs.GetAll(context.TODO(), nvcf.FunctionManagementFunctionIDGetAllParams{
+		Visibility: nvcf.F([]nvcf.FunctionManagementFunctionIDGetAllParamsVisibility{nvcf.FunctionManagementFunctionIDGetAllParamsVisibilityAuthorized}),
 	})
 	if err != nil {
 		var apierr *nvcf.Error

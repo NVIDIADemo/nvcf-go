@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 func TestAssetNew(t *testing.T) {
@@ -23,6 +23,7 @@ func TestAssetNew(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.Assets.New(context.TODO(), nvcf.AssetNewParams{
 		ContentType: nvcf.F("contentType"),
@@ -37,7 +38,7 @@ func TestAssetNew(t *testing.T) {
 	}
 }
 
-func TestAssetList(t *testing.T) {
+func TestAssetGetAll(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -47,8 +48,9 @@ func TestAssetList(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
-	_, err := client.Assets.List(context.TODO())
+	_, err := client.Assets.GetAll(context.TODO())
 	if err != nil {
 		var apierr *nvcf.Error
 		if errors.As(err, &apierr) {

@@ -5,9 +5,10 @@ package nvcf
 import (
 	"context"
 	"net/http"
+	"os"
 
-	"github.com/brevdev/nvcf-go/internal/requestconfig"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go/internal/requestconfig"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 // Client creates a struct with services and top level methods that help with
@@ -31,11 +32,14 @@ type Client struct {
 }
 
 // NewClient generates a new client with the default option read from the
-// environment (). The option passed in as arguments are applied after these
-// default arguments, and all option will be passed down to the services and
-// requests that this client makes.
+// environment (NVCF_AUTH_TOKEN). The option passed in as arguments are applied
+// after these default arguments, and all option will be passed down to the
+// services and requests that this client makes.
 func NewClient(opts ...option.RequestOption) (r *Client) {
 	defaults := []option.RequestOption{option.WithEnvironmentProduction()}
+	if o, ok := os.LookupEnv("NVCF_AUTH_TOKEN"); ok {
+		defaults = append(defaults, option.WithAuthToken(o))
+	}
 	opts = append(defaults, opts...)
 
 	r = &Client{Options: opts}

@@ -20,7 +20,7 @@ or products provided by NVCF please follow the respective company's security rep
 
 ### NVCF Terms and Policies
 
-Please contact dev-feedback@nvidia-cloud-functions.com for any questions or concerns regarding security of our services.
+Please contact dev-feedback@nvidia.com for any questions or concerns regarding security of our services.
 
 ---
 

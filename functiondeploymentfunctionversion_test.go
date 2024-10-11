@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/brevdev/nvcf-go"
-	"github.com/brevdev/nvcf-go/internal/testutil"
-	"github.com/brevdev/nvcf-go/option"
+	"github.com/NVIDIADemo/nvcf-go"
+	"github.com/NVIDIADemo/nvcf-go/internal/testutil"
+	"github.com/NVIDIADemo/nvcf-go/option"
 )
 
 func TestFunctionDeploymentFunctionVersionNew(t *testing.T) {
@@ -23,6 +23,7 @@ func TestFunctionDeploymentFunctionVersionNew(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.FunctionDeployment.Functions.Versions.New(
 		context.TODO(),
@@ -90,6 +91,7 @@ func TestFunctionDeploymentFunctionVersionGet(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.FunctionDeployment.Functions.Versions.Get(
 		context.TODO(),
@@ -115,6 +117,7 @@ func TestFunctionDeploymentFunctionVersionUpdate(t *testing.T) {
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.FunctionDeployment.Functions.Versions.Update(
 		context.TODO(),
@@ -182,6 +185,7 @@ func TestFunctionDeploymentFunctionVersionDeleteWithOptionalParams(t *testing.T)
 	}
 	client := nvcf.NewClient(
 		option.WithBaseURL(baseURL),
+		option.WithAuthToken("My Auth Token"),
 	)
 	_, err := client.FunctionDeployment.Functions.Versions.Delete(
 		context.TODO(),
